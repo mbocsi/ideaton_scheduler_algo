@@ -1,0 +1,43 @@
+REQ = {
+    "Computer Science": {
+        "Art": {"courses" : ["ART101", "MUSIC101", "ART102", "ART201", "ART202", "ART240", "MUSIC102"], "type": "credit", "amount": 15},
+        "Basic Computer Science": {"courses": ["CS240", "CS300", "CS400", "CS252", "CS354"], "type": "required"},
+        "Basic Calculus": {"courses": ["MATH221", "MATH222"], "type":"required"},
+        "Linear Algebra": {"courses": ["MATH320", "MATH340", "MATH341", "MATH375"], "type": "choose", "amount": 1},
+        "Software and Hardware": {"courses": ["CS407", "CS506", "CS536", "CS537", "CS542", "CS544", "CS552", "CS564", "CS640", "CS642"], "type":"choose", "amount": 2},
+        "Elective": {"courses": ["CS407"], "type": "choose", "amount": 1}
+    }
+}
+COURSES = {
+    "ART101": {"credits": 4, "prerequisites": []},
+    "MUSIC101": {"credits": 4, "prerequisites": []},
+    "ART102": {"credits": 4, "prerequisites": ["ART101"]},
+    "ART201": {"credits": 4, "prerequisites": []},
+    "ART202": {"credits": 4, "prerequisites": ["ART201"]},
+    "ART240": {"credits": 3, "prerequisites": ["ART102"]},
+    "MUSIC102": {"credits": 4, "prerequisites": ["MUSIC101"]},
+    "CS240": {"credits": 3, "prerequisites": ["MATH221"]},
+    "CS300": {"credits": 3, "prerequisites": []},
+    "CS400": {"credits": 3, "prerequisites": ["CS300"]},
+    "CS252": {"credits": 3, "prerequisites": []},
+    "CS354": {"credits": 3, "prerequisites": ["CS400"]},
+    "MATH221": {"credits": 3, "prerequisites": []},
+    "MATH222": {"credits": 3, "prerequisites": ["MATH221"]},
+    "MATH234": {"credits": 3, "prerequisites": ["MATH222"]},
+    "MATH320": {"credits": 3, "prerequisites": ["MATH222"]},
+    "MATH340": {"credits": 3, "prerequisites": ["MATH222"]},
+    "MATH341": {"credits": 3, "prerequisites": ["MATH234"]},
+    "MATH375": {"credits": 5, "prerequisites": ["MATH234"]},
+    "CS407": {"credits": 4, "prerequisites": ["CS400"]},
+    "CS506": {"credits": 3, "prerequisites": ["CS400"]},
+    "CS536": {"credits": 3, "prerequisites": ["CS400"]},
+    "CS537": {"credits": 4, "prerequisites": ["CS400"]},
+    "CS542": {"credits": 3, "prerequisites": ["CS400"]},
+    "CS544": {"credits": 3, "prerequisites": ["CS400"]},
+    "CS552": {"credits": 3, "prerequisites": ["CS400"]},
+    "CS564": {"credits": 4, "prerequisites": ["CS400"]},
+    "CS640": {"credits": 3, "prerequisites": ["CS400"]},
+    "CS642": {"credits": 3, "prerequisites": ["CS400"]},
+    "MATH400": {"credits": 3, "prerequisites": ["MATH234"]},
+    "STATS200": {"credits": 3, "prerequisites": ["MATH222"]},
+}
