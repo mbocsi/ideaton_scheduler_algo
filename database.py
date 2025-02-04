@@ -85,7 +85,7 @@ COURSES = {
 }
 
 import random
-random.seed(42)
+random.seed(2626)
 
 import re
 def ecn(course_code):

@@ -5,7 +5,8 @@ from database import REQ, COURSES
 class MIP:
     def __init__(self, major, college, optimize="gpa", semesters=8, min_credits=12, max_credits=18):
         self.model = gp.Model("CollegeCourseScheduling")
-        self.model.setParam('OptimalityTol', 1e-4)
+        # self.model.setParam('OptimalityTol', 1e-2)
+        self.model.setParam('MIPGap', 1e-2) # Reduce bound gap required to finish optimization
         
         self.courses, self.prereqs, self.gpa, self.credits = self.fetch_courses()
         self.required_courses, self.optional_courses, self.opt_requirements = self.fetch_requirements(major, college)
@@ -91,10 +92,7 @@ class MIP:
             for i in self.courses:
                 for t in self.semesters:
                     if self.x[i, t].x > 0.5:
-                        semester_schedule[t].append(i)
-            
-            for t in sorted(semester_schedule.keys()):
-                if semester_schedule[t]:
-                    print(f"Semester {t}: {', '.join(semester_schedule[t])}")
+                        semester_schedule[t].append({"code": i, "GPA": self.gpa[i], "credits": self.credits[i]})
+            return {"Average GPA": self.model.ObjVal, "semesters": semester_schedule} 
         else:
             print("No optimal solution found")

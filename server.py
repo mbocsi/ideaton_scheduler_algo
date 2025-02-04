@@ -14,8 +14,7 @@ def parse():
     school = data.get('school')
     optimize = data.get('optimize')
     mip = MIP(major, school)
-    mip.run()
-    return f"Received major: {major}, school: {school}, optimize: {optimize}"
+    return mip.run()
 
 if __name__ == '__main__':
     app.run(debug=True)
