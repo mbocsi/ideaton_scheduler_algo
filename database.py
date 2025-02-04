@@ -46,8 +46,6 @@ COURSES = {
     "CS564": {"credits": 4, "prerequisites": ["CS400", "CS354"]},
     "CS640": {"credits": 3, "prerequisites": ["CS537"]},
     "CS642": {"credits": 3, "prerequisites": ["CS537"]},
-    "MATH400": {"credits": 3, "prerequisites": ["MATH234"]},
-    "STATS200": {"credits": 3, "prerequisites": ["MATH222"]},
     "CS412": {"credits": 3, "prerequisites": ["MATH222", "CS240", "CS300"]},
     "CS425": {"credits": 3, "prerequisites": ["MATH340", "CS300"]},
     "CS513": {"credits": 3, "prerequisites": ["MATH340"]},
@@ -95,4 +93,4 @@ def ecn(course_code):
     return match.group() if match else None
 
 for course_code, course_info in COURSES.items():
-    course_info["gpa"] = round(random.uniform(3.0 - (int(ecn(course_code)) // 100) * 0.1, 4.0 - (int(ecn(course_code)) // 100) * 0.1), 2)
+    course_info["gpa"] = round(random.uniform(3.0 - float(ecn(course_code)) / 1000, 4.0 - float(ecn(course_code)) / 1000), 2)

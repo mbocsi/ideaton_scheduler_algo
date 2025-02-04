@@ -1,6 +1,6 @@
 import gurobipy as gp
 from gurobipy import GRB
-from data import REQ, COURSES
+from database import REQ, COURSES
 
 # Extract courses, prerequisites, and credits dynamically
 courses = list(COURSES.keys())
@@ -32,6 +32,8 @@ model = gp.Model("CollegeCourseScheduling")
 
 # Decision variables
 x = model.addVars(courses, semesters, vtype=GRB.BINARY, name="x")
+
+model.setParam('OptimalityTol', 1e-4) # Make model run faster (~2 seconds)
 
 def add_schedule_constraints():
     # Required courses must be taken exactly once
